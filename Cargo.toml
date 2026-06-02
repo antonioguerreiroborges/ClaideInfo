@@ -1,0 +1,15 @@
+[package]
+name = "claide-info"
+version = "0.1.0"
+edition = "2021"
+description = "Histórico de uso do Claude Code (tempo trabalhado e tokens), estilo tempo de jogo da Steam"
+
+[[bin]]
+name = "claude-info"
+path = "src/main.rs"
+
+[dependencies]
+serde_json = "1"
+
+[profile.release]
+opt-level = 3
