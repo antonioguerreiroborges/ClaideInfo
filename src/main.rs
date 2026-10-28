@@ -30,10 +30,11 @@ struct Stats {
 }
 
 fn main() {
-    let home = match env::var("HOME") {
+    // Native Windows usually has no HOME, only USERPROFILE.
+    let home = match env::var("HOME").or_else(|_| env::var("USERPROFILE")) {
         Ok(h) => h,
         Err(_) => {
-            eprintln!("Error: HOME environment variable is not set.");
+            eprintln!("Error: neither HOME nor USERPROFILE environment variable is set.");
             std::process::exit(1);
         }
     };
